@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7qgjq2upssom"]
+
+[ext_resource type="Texture2D" uid="uid://bqfb4fof6uqji" path="res://Third Party Assets/LemiZu/Enviroment/18_Jail_Black_Shadow_48x48.png" id="1_djlhl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sr1qd"]
+radius = 48.0
+height = 144.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cp50u"]
+size = Vector2(58, 112)
+
+[node name="Static Item" type="Area2D"]
+position = Vector2(1176, 1240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 0)
+shape = SubResource("CapsuleShape2D_sr1qd")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("1_djlhl")
+region_enabled = true
+region_rect = Rect2(336, 555, 66, 108)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-5, 0)
+shape = SubResource("RectangleShape2D_cp50u")

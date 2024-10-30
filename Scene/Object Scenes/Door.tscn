@@ -1,0 +1,257 @@
+[gd_scene load_steps=23 format=3 uid="uid://73uymhsm1cbr"]
+
+[ext_resource type="Script" path="res://Script/door.gd" id="1_70sbb"]
+[ext_resource type="Texture2D" uid="uid://cdt7claf6jvj1" path="res://Third Party Assets/Kenney/tilemap_packed.png" id="2_qyf5d"]
+[ext_resource type="Texture2D" uid="uid://paplxmrwq1df" path="res://Third Party Assets/LemiZu/Enviroment/animated_door_prison_cell_48x48.png" id="3_c4pxg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i18a3"]
+size = Vector2(64, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjgvg"]
+atlas = ExtResource("2_qyf5d")
+region = Rect2(304, 32, 15, 16)
+
+[sub_resource type="Animation" id="Animation_ulxxc"]
+resource_name = "Close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 3, 2, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.466667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3xvps"]
+resource_name = "Closed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tt474"]
+resource_name = "Open"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kl17y"]
+resource_name = "Opened"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_j7ubq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oyf1g"]
+_data = {
+"Close": SubResource("Animation_ulxxc"),
+"Closed": SubResource("Animation_3xvps"),
+"Open": SubResource("Animation_tt474"),
+"Opened": SubResource("Animation_kl17y"),
+"RESET": SubResource("Animation_j7ubq")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jfinv"]
+animation = &"Close"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l2rpx"]
+animation = &"Closed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qcvrc"]
+animation = &"Open"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_csrnt"]
+animation = &"Opened"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uvps3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jvag0"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"IsOpen"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aoxyn"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8x34k"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6nie7"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"IsClosed"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0jjls"]
+states/Close/node = SubResource("AnimationNodeAnimation_jfinv")
+states/Close/position = Vector2(461.333, 192)
+states/Closed/node = SubResource("AnimationNodeAnimation_l2rpx")
+states/Closed/position = Vector2(330.222, 106.222)
+states/Open/node = SubResource("AnimationNodeAnimation_qcvrc")
+states/Open/position = Vector2(460, 36)
+states/Opened/node = SubResource("AnimationNodeAnimation_csrnt")
+states/Opened/position = Vector2(575.333, 106)
+states/Start/position = Vector2(185.333, 107.704)
+transitions = ["Start", "Closed", SubResource("AnimationNodeStateMachineTransition_uvps3"), "Closed", "Open", SubResource("AnimationNodeStateMachineTransition_jvag0"), "Close", "Closed", SubResource("AnimationNodeStateMachineTransition_aoxyn"), "Open", "Opened", SubResource("AnimationNodeStateMachineTransition_8x34k"), "Opened", "Close", SubResource("AnimationNodeStateMachineTransition_6nie7")]
+graph_offset = Vector2(-128, -4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugqhv"]
+size = Vector2(48, 130)
+
+[node name="Door" type="Area2D" groups=["Interactable"]]
+position = Vector2(696, -312)
+script = ExtResource("1_70sbb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_i18a3")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -24.0
+offset_top = -122.0
+offset_right = 16.0
+offset_bottom = -82.0
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_rjgvg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("3_c4pxg")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oyf1g")
+}
+autoplay = "Closed"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_0jjls")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/IsClosed = false
+parameters/conditions/IsOpen = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_ugqhv")

@@ -1,0 +1,164 @@
+[gd_scene load_steps=19 format=3 uid="uid://4e6ni08suqy4"]
+
+[ext_resource type="Texture2D" uid="uid://c12yxevsotyi2" path="res://Third Party Assets/LemiZu/Enviroment/animated_morgue_freezer_door_empty_48x48.png" id="1_bs1tg"]
+[ext_resource type="Texture2D" uid="uid://cdt7claf6jvj1" path="res://Third Party Assets/Kenney/tilemap_packed.png" id="2_s5k8q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mfgm"]
+radius = 40.0
+height = 112.0
+
+[sub_resource type="Animation" id="Animation_5erhs"]
+resource_name = "Opened"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_63nkw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8fvaf"]
+resource_name = "close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9, 0]
+}
+
+[sub_resource type="Animation" id="Animation_j8gnw"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w8tsq"]
+_data = {
+"Opened": SubResource("Animation_5erhs"),
+"RESET": SubResource("Animation_63nkw"),
+"close": SubResource("Animation_8fvaf"),
+"open": SubResource("Animation_j8gnw")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fivsy"]
+animation = &"Opened"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_13mq5"]
+animation = &"close"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2hnec"]
+animation = &"open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_08ed8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n3wcx"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_07awy"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u5exb"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kvjfp"]
+states/Opened/node = SubResource("AnimationNodeAnimation_fivsy")
+states/Opened/position = Vector2(314.667, 88.6667)
+states/close/node = SubResource("AnimationNodeAnimation_13mq5")
+states/close/position = Vector2(562.667, 87.7778)
+states/open/node = SubResource("AnimationNodeAnimation_2hnec")
+states/open/position = Vector2(446.667, 204.444)
+transitions = ["Start", "Opened", SubResource("AnimationNodeStateMachineTransition_08ed8"), "Opened", "close", SubResource("AnimationNodeStateMachineTransition_n3wcx"), "open", "Opened", SubResource("AnimationNodeStateMachineTransition_07awy"), "close", "open", SubResource("AnimationNodeStateMachineTransition_u5exb")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cr5bn"]
+size = Vector2(48, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0klee"]
+atlas = ExtResource("2_s5k8q")
+region = Rect2(304, 32, 15, 16)
+
+[node name="Interactive Item" type="Area2D"]
+position = Vector2(1224, 1488)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_4mfgm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bs1tg")
+offset = Vector2(-23, 0)
+hframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w8tsq")
+}
+autoplay = "Opened"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_kvjfp")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_cr5bn")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -24.0
+offset_top = -136.0
+offset_right = 16.0
+offset_bottom = -96.0
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_top = 34.0
+offset_right = 96.0
+offset_bottom = 130.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_0klee")

@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://caci0sqmsfl26"]
+
+[ext_resource type="Texture2D" uid="uid://bqfb4fof6uqji" path="res://Third Party Assets/LemiZu/Enviroment/18_Jail_Black_Shadow_48x48.png" id="1_cxihl"]
+[ext_resource type="Texture2D" uid="uid://cdt7claf6jvj1" path="res://Third Party Assets/Kenney/tilemap_packed.png" id="2_nf3im"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iubb5"]
+radius = 32.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twvaq"]
+atlas = ExtResource("1_cxihl")
+region = Rect2(144, 264, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wiusj"]
+atlas = ExtResource("2_nf3im")
+region = Rect2(304, 32, 15, 16)
+
+[node name="Collectable" type="Area2D" groups=["Interactable"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_iubb5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+texture = SubResource("AtlasTexture_twvaq")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -24.0
+offset_top = -122.0
+offset_right = 16.0
+offset_bottom = -82.0
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_top = 34.0
+offset_right = 96.0
+offset_bottom = 130.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_wiusj")
