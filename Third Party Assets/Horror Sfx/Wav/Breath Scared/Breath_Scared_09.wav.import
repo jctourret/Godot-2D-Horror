@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cim40se4rlf54"
+path="res://.godot/imported/Breath_Scared_09.wav-677c12038928bd30568082e3efdd730e.sample"
+
+[deps]
+
+source_file="res://Third Party Assets/Horror Sfx/Wav/Breath Scared/Breath_Scared_09.wav"
+dest_files=["res://.godot/imported/Breath_Scared_09.wav-677c12038928bd30568082e3efdd730e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

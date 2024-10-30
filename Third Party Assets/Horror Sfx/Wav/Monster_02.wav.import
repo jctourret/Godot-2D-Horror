@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dym2y6k1rnafp"
+path="res://.godot/imported/Monster_02.wav-ec5034fa1446750c2a26e5e25c2e7b17.sample"
+
+[deps]
+
+source_file="res://Third Party Assets/Horror Sfx/Wav/Monster_02.wav"
+dest_files=["res://.godot/imported/Monster_02.wav-ec5034fa1446750c2a26e5e25c2e7b17.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

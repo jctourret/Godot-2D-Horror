@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cd25inodeiylx"
+path="res://.godot/imported/Blood_Dripping_Loop_02.wav-5cdd6250a570b9529ce04ba80690fcfd.sample"
+
+[deps]
+
+source_file="res://Third Party Assets/Horror Sfx/Wav/Blood_Dripping_Loop_02.wav"
+dest_files=["res://.godot/imported/Blood_Dripping_Loop_02.wav-5cdd6250a570b9529ce04ba80690fcfd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

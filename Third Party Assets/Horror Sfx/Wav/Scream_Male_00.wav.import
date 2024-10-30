@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://evpr4rlv7d01"
+path="res://.godot/imported/Scream_Male_00.wav-7c1b69e47d7a2612e939b91f01f97b76.sample"
+
+[deps]
+
+source_file="res://Third Party Assets/Horror Sfx/Wav/Scream_Male_00.wav"
+dest_files=["res://.godot/imported/Scream_Male_00.wav-7c1b69e47d7a2612e939b91f01f97b76.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

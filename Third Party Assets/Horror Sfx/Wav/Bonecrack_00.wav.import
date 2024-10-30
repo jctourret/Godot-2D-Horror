@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dguf3a8td4fbc"
+path="res://.godot/imported/Bonecrack_00.wav-33a18023d730f98ef4f15f60e19fc43e.sample"
+
+[deps]
+
+source_file="res://Third Party Assets/Horror Sfx/Wav/Bonecrack_00.wav"
+dest_files=["res://.godot/imported/Bonecrack_00.wav-33a18023d730f98ef4f15f60e19fc43e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
